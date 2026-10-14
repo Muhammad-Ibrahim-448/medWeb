@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  /* ============================================================
+     COLOR SYSTEM
+     ============================================================ */
+  
+  /* Primary Dark Navy */
+  --color-navy-900: #050a30;
+  --color-navy-800: #0a1545;
+  --color-navy-700: #101b4b;
+  
+  /* Brand Indigo */
+  --color-brand-indigo: #4f46e5;
+  
+  /* Mint Green */
+  --color-mint-100: #d1fae5;
+  --color-mint-200: #a7f3d0;
+  
+  /* Neutrals */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-white: #ffffff;
+
+  /* ============================================================
+     TYPOGRAPHY (Changed to Arial)
+     ============================================================ */
+  --font-sans: Arial, Helvetica, sans-serif;
+
+  /* ============================================================
+     SPACING & RADIUS
+     ============================================================ */
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+}
+
+/* ================================================================
+   BASE STYLES
+   ================================================================ */
+@layer base {
+  * {
+    border-color: var(--color-gray-100);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-white);
+    color: var(--color-navy-900);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-mint-100);
+    color: var(--color-navy-900);
+  }
+}
+
+/* ================================================================
+   COMPONENT UTILITIES
+   ================================================================ */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

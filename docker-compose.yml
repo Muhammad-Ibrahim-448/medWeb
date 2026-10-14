@@ -1,0 +1,11 @@
+services:
+  web:
+    container_name: shoaibjewellers
+    build: .
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    ports:
+      - "3024:3000"
