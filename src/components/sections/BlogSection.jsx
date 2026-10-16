@@ -1,42 +1,21 @@
-
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
-const articles = [
-  {
-    title: "What Is Home Healthcare?",
-    excerpt:
-      "Learn what home healthcare may involve, which services can be provided at home, and why the right setting depends on individual needs.",
-    image: "/images/article-respite-care.jpg",
-    alt: "Caregiver talking with an older adult",
-    href: "/resources/what-is-home-healthcare/",
-  },
-  {
-    title: "How to Choose Home Healthcare",
-    excerpt:
-      "Understand which questions to ask about service scope, professional responsibilities, availability, fees, and privacy before making an arrangement.",
-    image: "/images/article-blood-pressure.jpg",
-    alt: "Caregiver supporting an older adult",
-    href: "/resources/choosing-home-healthcare/",
-  },
-  {
-    title: "Arranging Support After a Hospital Stay",
-    excerpt:
-      "Explore practical considerations for arranging support at home after discharge and why the treating team's instructions should guide the next steps.",
-    image: "/images/article-pet-therapy.jpg",
-    alt: "Healthcare professional speaking with a family",
-    href: "/resources/post-hospital-support/",
-  },
-];
+import { posts, categories } from "@/lib/posts";
 
 export default function BlogSection() {
+  // Show only the first 3 posts on the homepage section
+  const featuredArticles = posts.slice(0, 3);
+
   return (
     <section className="w-full bg-white py-16 sm:py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,10 +35,11 @@ export default function BlogSection() {
           </p>
         </motion.div>
 
+        {/* Cards Grid */}
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
-          {articles.map((article, index) => (
+          {featuredArticles.map((article, index) => (
             <motion.article
-              key={article.title}
+              key={article.slug}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -68,8 +48,8 @@ export default function BlogSection() {
             >
               <div className="relative aspect-[16/10] w-full overflow-hidden">
                 <Image
-                  src={article.image}
-                  alt={article.alt}
+                  src={article.cover_image}
+                  alt={article.title}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -77,6 +57,10 @@ export default function BlogSection() {
               </div>
 
               <div className="flex flex-1 flex-col p-6 sm:p-7">
+                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-[#4754ff]">
+                  {article.category}
+                </p>
+
                 <h3 className="mb-3 text-xl font-medium leading-snug text-[#0f1681] sm:text-2xl">
                   {article.title}
                 </h3>
@@ -85,17 +69,34 @@ export default function BlogSection() {
                   {article.excerpt}
                 </p>
 
-                <a
-                  href={article.href}
+                <Link
+                  href={`/how-it-works/blog/${article.slug}`}
                   className="inline-flex items-center gap-2 text-sm font-semibold text-[#0f1681] transition-colors hover:text-[#4754ff]"
                 >
                   Read More
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
+                </Link>
               </div>
             </motion.article>
           ))}
         </div>
+
+        {/* View All CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-12 flex justify-center sm:mt-16"
+        >
+          <Link
+            href="/how-it-works/blog"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#0f1681] px-7 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#4754ff]"
+          >
+            View All Articles
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

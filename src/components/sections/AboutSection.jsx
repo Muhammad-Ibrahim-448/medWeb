@@ -36,7 +36,7 @@ export function AboutSection() {
           >
             <div className="relative z-10 mx-auto aspect-[4/5] w-full max-w-[520px] lg:mx-0">
               <Image
-                src="/images/nurse-caring-about-senior.png"
+                src="/images/about-section-healthcare.png"
                 alt="Home healthcare support for an older adult"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

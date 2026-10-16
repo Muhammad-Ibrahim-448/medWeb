@@ -113,7 +113,7 @@ export function WhyChooseUsSection() {
 
             <div className="relative z-10 aspect-[3/4] w-full">
               <Image
-                src="/images/why-choose-us-nurse.png"
+                src="/images/clear-information-image.png"
                 alt="Caregiver speaking with an older adult"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
