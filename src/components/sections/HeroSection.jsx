@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -6,9 +5,28 @@ import { motion } from "framer-motion";
 import {
   Clock,
   UserRound,
-  DollarSign,
   ShieldCheck,
 } from "lucide-react";
+
+function PKRIcon({ className }) {
+  return (
+    <span
+      className={className}
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontWeight: 700,
+        fontSize: "0.75em",
+        lineHeight: 1,
+        letterSpacing: "-0.02em",
+      }}
+      aria-hidden="true"
+    >
+      PKR
+    </span>
+  );
+}
 
 const features = [
   {
@@ -27,7 +45,7 @@ const features = [
     title: "Fees Explained",
     description:
       "Understand applicable charges before confirming a service.",
-    Icon: DollarSign,
+    Icon: PKRIcon,
   },
   {
     title: "Privacy Matters",
@@ -91,7 +109,7 @@ export default function HeroSection() {
 
               {/* Heading from the document */}
               <h1 className="mb-5 text-[clamp(2.25rem,6vw,4.25rem)] font-light leading-[1.08] tracking-tight text-black lg:text-[clamp(3.25rem,4.5vw,4.75rem)] xl:text-[68px]">
-                Healthcare Support at Home, With the Details Made Clear.
+                Healthcare at Your Doorstep, With Every Detail Taken Care Of.
               </h1>
 
               {/* Exact homepage supporting message */}
@@ -218,7 +236,6 @@ export default function HeroSection() {
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-[#e8ebff] sm:h-12 sm:w-12">
                   <Icon
                     className="h-5 w-5 text-[#0f1681] sm:h-6 sm:w-6"
-                    strokeWidth={1.8}
                     aria-hidden="true"
                   />
                 </div>
